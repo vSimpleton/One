@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="- 阅读 -"
+        android:layout_gravity="center_horizontal"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="普通朋友"
+        android:textColor="@color/_333333"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="文/大冰"
+        android:textColor="@color/_808080"
+        android:textSize="13sp"
+        android:layout_marginTop="3dp"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/default_top_bg"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="情义这东西，一见如故容易，难的是来日方长的陪伴。"
+        android:textColor="@color/_808080"
+        android:textSize="13sp"
+        android:layout_marginTop="8dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="今天"
+            android:textSize="11sp"
+            android:textColor="@color/_808080"
+            android:layout_centerVertical="true"/>
+
+        <LinearLayout
+            android:id="@+id/likeLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:layout_toLeftOf="@+id/ivShare">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_like_normal"
+                android:layout_gravity="center_vertical"/>
+
+            <TextView
+                android:id="@+id/tvCmtCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:text="1326"
+                android:textColor="#98a1aa"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivShare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_share"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

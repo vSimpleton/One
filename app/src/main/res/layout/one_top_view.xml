@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/default_top_bg" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="摄影  | Jordan Steranka"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:textSize="12sp"
+            android:textColor="@color/_808080"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我当然不会试图摘月，我要月亮奔我而来。"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:textColor="@color/_333333"
+            android:textSize="13sp"
+            android:layout_marginTop="25dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="奥黛丽 赫本"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:textSize="12sp"
+            android:textColor="@color/_808080"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="25dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="发现"
+                android:drawableLeft="@drawable/ic_discovery"
+                android:drawablePadding="3dp"
+                android:textSize="11sp"
+                android:gravity="center_vertical"
+                android:layout_centerVertical="true"/>
+
+            <ImageView
+                android:id="@+id/ivDairy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_diary"
+                android:layout_toLeftOf="@+id/ivCollect"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="20dp"/>
+
+            <ImageView
+                android:id="@+id/ivCollect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_collect_normal"
+                android:layout_toLeftOf="@+id/ivShare"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="20dp"/>
+
+            <ImageView
+                android:id="@+id/ivShare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_share"
+                android:layout_toLeftOf="@+id/likeLayout"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="20dp"/>
+
+            <LinearLayout
+                android:id="@+id/likeLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="20dp"
+                android:orientation="horizontal"
+                android:layout_alignParentRight="true">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_like_normal"
+                    android:layout_gravity="center_vertical"/>
+
+                <TextView
+                    android:id="@+id/tvCmtCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:text="1326"
+                    android:textColor="#98a1aa"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
