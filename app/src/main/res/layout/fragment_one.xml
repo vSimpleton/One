@@ -2,14 +2,13 @@
 <RelativeLayout
     android:id="@+id/contentLayout"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".one.view.OneFragment">
+    android:orientation="vertical">
 
-    <oms.pomelo.one.one.view.OneTopView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcyContent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>

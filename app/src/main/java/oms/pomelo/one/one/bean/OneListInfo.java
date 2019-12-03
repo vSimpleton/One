@@ -1,6 +1,7 @@
 package oms.pomelo.one.one.bean;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ public class OneListInfo {
     public Weather weather;
     public String date;
     public MenuBean menu;
-    public List<ContentList> contents;
+    public ArrayList<ContentList> content_list;
 
     public static class Weather {
         public String city_name; //所在城市
