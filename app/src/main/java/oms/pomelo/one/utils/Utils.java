@@ -161,4 +161,36 @@ public class Utils {
         return mTouchListener;
     }
 
+    public static String getDateFormat(String format) {
+        String msg = null;
+        String year = format.substring(0, 4);
+        String month = format.substring(5, 7);
+        if (month.equals("12")) {
+            msg = "Dec." + year;
+        } else if (month.equals("1")) {
+            msg = "Jan." + year;
+        } else if (month.equals("2")) {
+            msg = "Feb." + year;
+        } else if (month.equals("3")) {
+            msg = "Mar." + year;
+        } else if (month.equals("4")) {
+            msg = "Apr." + year;
+        } else if (month.equals("5")) {
+            msg = "May." + year;
+        } else if (month.equals("6")) {
+            msg = "Jun." + year;
+        } else if (month.equals("7")) {
+            msg = "Jul." + year;
+        } else if (month.equals("8")) {
+            msg = "Aug." + year;
+        } else if (month.equals("9")) {
+            msg = "Sept." + year;
+        } else if (month.equals("10")) {
+            msg = "Oct." + year;
+        } else if (month.equals("11")) {
+            msg = "Nov." + year;
+        }
+        return msg;
+    }
+
 }

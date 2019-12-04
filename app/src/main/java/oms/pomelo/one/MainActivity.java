@@ -18,6 +18,7 @@ import oms.pomelo.one.all.AllFragment;
 import oms.pomelo.one.base.BaseActivity;
 import oms.pomelo.one.me.MeFragment;
 import oms.pomelo.one.one.view.OneFragment;
+import oms.pomelo.one.utils.StatusBarUtils;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener, ViewPager.OnPageChangeListener, RadioGroup.OnCheckedChangeListener {
 
@@ -30,7 +31,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        StatusBarUtils.transparencyBar(this);
+        StatusBarUtils.StatusBarLightMode(this);
         initView();
         initListener();
     }
