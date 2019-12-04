@@ -1,14 +1,12 @@
-package oms.pomelo.one.one;
+package oms.pomelo.one.one.main;
 
 import android.content.Context;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import oms.pomelo.one.one.bean.OneListInfo;
 import oms.pomelo.one.one.view.OneMainView;

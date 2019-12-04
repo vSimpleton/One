@@ -1,4 +1,4 @@
-package oms.pomelo.one.one;
+package oms.pomelo.one.one.main;
 
 import android.content.Context;
 
@@ -7,6 +7,7 @@ import io.reactivex.schedulers.Schedulers;
 import oms.pomelo.one.base.BaseModel;
 import oms.pomelo.one.base.BaseObserver;
 import oms.pomelo.one.one.bean.OneListInfo;
+import oms.pomelo.one.one.main.OneListContract;
 
 /**
  * Created by Sherry on 2019/12/3

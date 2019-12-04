@@ -2,6 +2,7 @@ package oms.pomelo.one.http;
 
 import io.reactivex.Observable;
 import oms.pomelo.one.base.BaseModel;
+import oms.pomelo.one.one.bean.NoteInfo;
 import oms.pomelo.one.one.bean.OneListInfo;
 import retrofit2.http.GET;
 
@@ -11,7 +12,10 @@ import retrofit2.http.GET;
 
 public interface ApiService {
 
-    @GET(ApiHelper.ONE_CONTENT_LIST)
+    @GET(ApiHelper.GET_ONE_CONTENT_LIST)
     Observable<BaseModel<OneListInfo>> getOneListInfo();
+
+    @GET(ApiHelper.GET_NOTE_INFO)
+    Observable<BaseModel<NoteInfo>> getNoteInfo();
 
 }

@@ -8,6 +8,7 @@ public class BaseModel<T> {
 
     private int res;
     private T data;
+    private String msg;
 
     public int getRes() {
         return res;
@@ -23,5 +24,13 @@ public class BaseModel<T> {
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 }

@@ -2,23 +2,19 @@ package oms.pomelo.one.one.view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
 import oms.pomelo.one.R;
-import oms.pomelo.one.one.OneListContract;
-import oms.pomelo.one.one.OneListPresenter;
+import oms.pomelo.one.one.note.NotesActivity;
 import oms.pomelo.one.one.bean.OneListInfo;
-import oms.pomelo.one.utils.ToastUtil;
 import oms.pomelo.one.utils.Utils;
 
 /**
@@ -97,7 +93,7 @@ public class OneTopView extends RelativeLayout implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v == mTvDiscovery) {
-            ToastUtil.showTextToast(mContext, "跳转到小记广场");
+            mContext.startActivity(new Intent(mContext, NotesActivity.class));
         }
     }
 

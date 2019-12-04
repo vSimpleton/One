@@ -1,58 +1,199 @@
 package oms.pomelo.one.one.bean;
 
-import java.util.List;
+import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * NAME: Sherry
  * DATE: 2019-12-02
  * 小记广场
  */
-public class NoteInfo {
+public class NoteInfo implements Serializable {
 
-    public List<NoteList> list;
+    private ArrayList<NoteList> list;
 
-    public static class NoteList {
-        /**
-         * id : 1239845
-         * user_id : 10784431
-         * weather : 多云
-         * content : 十一月要买好看衣服，十二月有白雪和圣诞树，一月里来是新年，二月天气回暖，樱花和春天，一点一点数着过，日子也就不难熬了。
-         * picture : http://image.wufazhuce.com/FrtdP3mdYaF_BCHHx-sSMf9biNjy
-         * input_date : 2019-12-02 06:43:13
-         * img_url : http://image.wufazhuce.com/Fv33Y05AQrG6oOYW-DgXrduJNDmc
-         * addr :
-         * is_public : 1
-         * reviewed : 1
-         * remark :
-         * diary_id : 222306
-         * img_url_thumb_h : 240
-         * user : {"user_id":"10784431","user_name":"TenrZmriOP","web_url":"http://thirdwx.qlogo.cn/mmopen/vi_32/PiajxSqBRaEIulV3P1JEBH2JmFA8tM7gIJ9xmJptT6KibvPrx889nwtrGWPRnqVZwggic4vNlS9X1yxibvUNaVFv6Q/132"}
-         * img_url_thumb : http://image.wufazhuce.com/Fv33Y05AQrG6oOYW-DgXrduJNDmc?imageView2/2/w/320
-         * praisenum : 9
-         */
+    public ArrayList<NoteList> getList() {
+        return list;
+    }
 
-        public String id;
-        public String user_id;
-        public String weather;
-        public String content;
-        public String picture;
-        public String input_date;
-        public String img_url;
-        public String addr;
-        public String is_public;
-        public String reviewed;
-        public String remark;
-        public String diary_id;
-        public String img_url_thumb_h;
-        public UserInfo user;
-        public String img_url_thumb;
-        public int praisenum;
+    public void setList(ArrayList<NoteList> list) {
+        this.list = list;
+    }
 
-        public static class UserInfo {
-            public String user_id;
-            public String user_name;
-            public String web_url;
+    public static class NoteList implements Serializable{
+        private String id;
+        private String user_id;
+        private String weather;
+        private String content;
+        private String picture;
+        private String input_date;
+        private String img_url;
+        private String addr;
+        private String is_public;
+        private String reviewed;
+        private String remark;
+        private String diary_id;
+        private String img_url_thumb_h;
+        private UserInfo user;
+        private String img_url_thumb;
+        private int praisenum;
 
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public String getUser_id() {
+            return user_id;
+        }
+
+        public void setUser_id(String user_id) {
+            this.user_id = user_id;
+        }
+
+        public String getWeather() {
+            return weather;
+        }
+
+        public void setWeather(String weather) {
+            this.weather = weather;
+        }
+
+        public String getContent() {
+            return content;
+        }
+
+        public void setContent(String content) {
+            this.content = content;
+        }
+
+        public String getPicture() {
+            return picture;
+        }
+
+        public void setPicture(String picture) {
+            this.picture = picture;
+        }
+
+        public String getInput_date() {
+            return input_date;
+        }
+
+        public void setInput_date(String input_date) {
+            this.input_date = input_date;
+        }
+
+        public String getImg_url() {
+            return img_url;
+        }
+
+        public void setImg_url(String img_url) {
+            this.img_url = img_url;
+        }
+
+        public String getAddr() {
+            return addr;
+        }
+
+        public void setAddr(String addr) {
+            this.addr = addr;
+        }
+
+        public String getIs_public() {
+            return is_public;
+        }
+
+        public void setIs_public(String is_public) {
+            this.is_public = is_public;
+        }
+
+        public String getReviewed() {
+            return reviewed;
+        }
+
+        public void setReviewed(String reviewed) {
+            this.reviewed = reviewed;
+        }
+
+        public String getRemark() {
+            return remark;
+        }
+
+        public void setRemark(String remark) {
+            this.remark = remark;
+        }
+
+        public String getDiary_id() {
+            return diary_id;
+        }
+
+        public void setDiary_id(String diary_id) {
+            this.diary_id = diary_id;
+        }
+
+        public String getImg_url_thumb_h() {
+            return img_url_thumb_h;
+        }
+
+        public void setImg_url_thumb_h(String img_url_thumb_h) {
+            this.img_url_thumb_h = img_url_thumb_h;
+        }
+
+        public UserInfo getUser() {
+            return user;
+        }
+
+        public void setUser(UserInfo user) {
+            this.user = user;
+        }
+
+        public String getImg_url_thumb() {
+            return img_url_thumb;
+        }
+
+        public void setImg_url_thumb(String img_url_thumb) {
+            this.img_url_thumb = img_url_thumb;
+        }
+
+        public int getPraisenum() {
+            return praisenum;
+        }
+
+        public void setPraisenum(int praisenum) {
+            this.praisenum = praisenum;
+        }
+
+        public static class UserInfo implements Serializable{
+            private String user_id;
+            private String user_name;
+            private String web_url;
+
+            public String getUser_id() {
+                return user_id;
+            }
+
+            public void setUser_id(String user_id) {
+                this.user_id = user_id;
+            }
+
+            public String getUser_name() {
+                return user_name;
+            }
+
+            public void setUser_name(String user_name) {
+                this.user_name = user_name;
+            }
+
+            public String getWeb_url() {
+                return web_url;
+            }
+
+            public void setWeb_url(String web_url) {
+                this.web_url = web_url;
+            }
         }
     }
 }

@@ -4,7 +4,9 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
+import android.content.res.Resources;
 import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
@@ -36,22 +38,6 @@ public class Utils {
         sScreenH = w < h ? h : w;
         sDensity = dm.density;
         sDensityDpi = dm.densityDpi;
-    }
-
-    public static int getRealPixel(int pxSrc) {
-        int pix = (int) (pxSrc * sDensity / 2.0);
-        if (pxSrc == 1 && pix == 0) {
-            pix = 1;
-        }
-        return pix;
-    }
-
-    public static int getRealPixel2(int pxSrc) {
-        int pix = (int) (pxSrc * sScreenW / sRelativeScreenW);
-        if (pxSrc == 1 && pix == 0) {
-            pix = 1;
-        }
-        return pix;
     }
 
     public static View.OnTouchListener getAlphaTouchListener() {
@@ -191,6 +177,10 @@ public class Utils {
             msg = "Nov." + year;
         }
         return msg;
+    }
+
+    public static int dpToPx(int dp) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, Resources.getSystem().getDisplayMetrics());
     }
 
 }

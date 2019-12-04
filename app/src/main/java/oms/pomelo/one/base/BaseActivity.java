@@ -1,9 +1,12 @@
 package oms.pomelo.one.base;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import oms.pomelo.one.permission.PermissionsUtils;
 import oms.pomelo.one.utils.ToastUtil;
 
 /**
@@ -35,6 +38,7 @@ public class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         ActivityHandler.getInstance().finishActivity(this);
+        PermissionsUtils.onDestroy();
     }
 
     /**
@@ -46,5 +50,17 @@ public class BaseActivity extends AppCompatActivity {
 
     public void toast(String text) {
         ToastUtil.showTextToast(this, text);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        PermissionsUtils.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        PermissionsUtils.onActivityResult(requestCode, resultCode, data);
     }
 }

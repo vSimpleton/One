@@ -1,8 +1,6 @@
 package oms.pomelo.one.one.view;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.Rect;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,18 +15,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.Objects;
 
 import oms.pomelo.one.HeaderAndFooterAdapter;
 import oms.pomelo.one.R;
-import oms.pomelo.one.one.OneListAdapter;
-import oms.pomelo.one.one.OneListContract;
-import oms.pomelo.one.one.OneListPresenter;
+import oms.pomelo.one.one.main.OneListAdapter;
+import oms.pomelo.one.one.main.OneListContract;
+import oms.pomelo.one.one.main.OneListPresenter;
 import oms.pomelo.one.one.bean.OneListInfo;
-import oms.pomelo.one.utils.StatusBarUtils;
 import oms.pomelo.one.utils.Utils;
 
 public class OneFragment extends Fragment implements View.OnClickListener, OneListContract.OneListView {

@@ -1,4 +1,4 @@
-package oms.pomelo.one.one;
+package oms.pomelo.one.one.main;
 
 import android.content.Context;
 

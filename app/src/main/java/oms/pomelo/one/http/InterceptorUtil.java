@@ -6,6 +6,7 @@ import android.util.Log;
 import java.io.IOException;
 import java.nio.charset.Charset;
 
+import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -46,23 +47,25 @@ public class InterceptorUtil {
         return new Interceptor() {
             @Override
             public Response intercept(Chain chain) throws IOException {
-                Request request = chain.request();
-                request = request.newBuilder()
-                        .addHeader("platform", "android")
-                        .addHeader("sign", "891dffd5d78b50c8122514bd8073e502")
-                        .addHeader("user_id", "10879580")
-                        .addHeader("uuid", "A0AB8A9C-23B6-4D65-A585-D6BAD2546CC3")
-                        .addHeader("version", "v4.6.7")
+                Request oldRequest = chain.request();
+
+                HttpUrl.Builder builder = oldRequest.url()
+                        .newBuilder()
+                        .scheme(oldRequest.url().scheme())
+                        .host(oldRequest.url().host())
+                        .addQueryParameter("platform", "ios")
+                        .addQueryParameter("sign", "891dffd5d78b50c8122514bd8073e502")
+                        .addQueryParameter("user_id", "10879580")
+                        .addQueryParameter("uuid", "A0AB8A9C-23B6-4D65-A585-D6BAD2546CC3")
+                        .addQueryParameter("version", "v4.6.7");
+
+                Request newRequest = oldRequest.newBuilder()
+                        .method(oldRequest.method(), oldRequest.body())
+                        .url(builder.build())
                         .build();
-                Response response = chain.proceed(request);
+
+                Response response = chain.proceed(newRequest);
                 return response;
-//                Request mRequest = chain.request();//得到请求体
-//                Response response = chain.proceed(mRequest);//得到响应体
-//                if (response.code() == 401) {
-//                    String jsonStr = response.body().source().buffer().clone().readString(Charset.forName("UTF-8"));
-//                    Log.i("jsonStr", jsonStr);
-//                }
-//                return response;
             }
         };
     }
