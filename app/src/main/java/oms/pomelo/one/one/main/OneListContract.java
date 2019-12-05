@@ -18,6 +18,8 @@ public interface OneListContract {
 
         void getOneListFailed(String message);
 
+        void postLikeSuccess();
+
     }
 
     abstract class Presenter extends BasePresenter<OneListView> {
@@ -26,7 +28,9 @@ public interface OneListContract {
             super(context);
         }
 
-        public abstract void getOneListInfo();
+        public abstract void getOneListInfo(String date);
+
+        public abstract void postLike(String id);
     }
 
 }

@@ -11,12 +11,16 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
 
 import oms.pomelo.one.HeaderAndFooterAdapter;
@@ -38,6 +42,10 @@ public class OneFragment extends Fragment implements View.OnClickListener, OneLi
     private TextView mTvDay;
     private TextView mTvDate;
     private TextView mTvMore;
+    private View mFooterView;
+    private String today;
+    private SimpleDateFormat format;
+    private Date date;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -55,7 +63,8 @@ public class OneFragment extends Fragment implements View.OnClickListener, OneLi
     }
 
     private void initListener() {
-        mTopView.setOnClickListener(this);
+        mTopView.mIvLike.setOnClickListener(this);
+        mFooterView.setOnClickListener(this);
     }
 
     private void initView(View view) {
@@ -66,6 +75,11 @@ public class OneFragment extends Fragment implements View.OnClickListener, OneLi
         mTvDay = view.findViewById(R.id.tvDay);
         mTvDate = view.findViewById(R.id.tvDate);
         mTvMore = view.findViewById(R.id.tvMore);
+        mFooterView = LayoutInflater.from(mContext).inflate(R.layout.one_footer_view, null, false);
+
+        format = new SimpleDateFormat("yyyy-MM-dd");
+        date = new Date();
+        today = format.format(date);
     }
 
     private void initRecyclerView() {
@@ -79,7 +93,7 @@ public class OneFragment extends Fragment implements View.OnClickListener, OneLi
     private void initPresenter() {
         mPresenter = new OneListPresenter(getContext());
         mPresenter.attachView(this);
-        mPresenter.getOneListInfo();
+        mPresenter.getOneListInfo(today);
     }
 
     @Override
@@ -95,12 +109,13 @@ public class OneFragment extends Fragment implements View.OnClickListener, OneLi
         mAdapter = new OneListAdapter(mContext, listInfo.content_list);
         HeaderAndFooterAdapter adapter = new HeaderAndFooterAdapter(mAdapter);
         adapter.addHeaderView(mTopView);
+        adapter.addFootView(mFooterView);
         mRcyContent.setAdapter(adapter);
 
         String day = info.date.substring(8, 10);
         mTvDay.setText(day);
         mTvDate.setText(Utils.getDateFormat(info.date));
-        mTvMore.setText(info.weather.city_name + " · " + info.weather.climate + " · 湿度" + info.weather.humidity);
+        mTvMore.setText(info.weather.city_name + " · " + info.weather.climate + " " + info.weather.temperature + "℃");
     }
 
     @Override
@@ -109,9 +124,32 @@ public class OneFragment extends Fragment implements View.OnClickListener, OneLi
     }
 
     @Override
-    public void onClick(View v) {
-        if (v == mTopView) {
+    public void postLikeSuccess() {
+        Log.e("youzi", "Success");
+        getOneListSuccess(listInfo);
+        mTopView.mIvLike.setImageResource(R.drawable.ic_like_selected);
+    }
 
+    @Override
+    public void onClick(View v) {
+        if (v == mTopView.mIvLike) {
+            mPresenter.postLike(listInfo.content_list.get(0).id);
+        } else if (v == mFooterView) {
+            getBeforeDate();
+            mPresenter.getOneListInfo(today);
+            mRcyContent.getAdapter().notifyDataSetChanged();
         }
+    }
+
+    /**
+     * 获取前一天的日期
+     */
+    private void getBeforeDate() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DAY_OF_MONTH, -1);
+        //往前递减一天，并重置date跟today的值
+        date = calendar.getTime();
+        today = format.format(date);
     }
 }

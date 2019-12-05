@@ -33,8 +33,8 @@ public class OneTopView extends RelativeLayout implements View.OnClickListener {
     private ImageView mIvDairy;
     private ImageView mIvCollect;
     private ImageView mIvShare;
-    private ImageView mIvLike;
-    private TextView mTvLikeCount;
+    public ImageView mIvLike;
+    public TextView mTvLikeCount;
 
     public OneTopView(Context context) {
         this(context, null);

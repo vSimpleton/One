@@ -2,6 +2,7 @@ package oms.pomelo.one.one.view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -77,18 +78,30 @@ public class OneMainView extends RelativeLayout implements View.OnClickListener 
 
     public void setData(OneListInfo.ContentList content) {
         if (content.category.equals("1")) {
+            content.type = mContext.getResources().getString(R.string.one_read);
             mTvType.setText(mContext.getResources().getString(R.string.one_read));
         } else if (content.category.equals("2")) {
+            content.type = mContext.getResources().getString(R.string.one_serial);
             mTvType.setText(mContext.getResources().getString(R.string.one_serial));
         } else if (content.category.equals("3")) {
+            content.type = mContext.getResources().getString(R.string.one_answer);
             mTvType.setText(mContext.getResources().getString(R.string.one_answer));
         } else if (content.category.equals("4")) {
-            mTvType.setText(mContext.getResources().getString(R.string.one_movie));
+            content.type = mContext.getResources().getString(R.string.one_music);
+            mTvType.setText(mContext.getResources().getString(R.string.one_music));
         } else if (content.category.equals("5")) {
+            content.type = mContext.getResources().getString(R.string.one_movie);
             mTvType.setText(mContext.getResources().getString(R.string.one_movie));
+        } else if (content.category.equals("8")) {
+            content.type = mContext.getResources().getString(R.string.one_station);
+            mTvType.setText(mContext.getResources().getString(R.string.one_station));
         }
         mTvTitle.setText(content.title);
-        mTvContent.setText(content.forward);
+        if (TextUtils.isEmpty(content.forward)) {
+            mTvContent.setVisibility(GONE);
+        } else {
+            mTvContent.setText(content.forward);
+        }
         mTvAuthor.setText("文/" + content.author.user_name);
         mTvLikeCount.setText(content.like_count + "");
         mTvTime.setText("今天");

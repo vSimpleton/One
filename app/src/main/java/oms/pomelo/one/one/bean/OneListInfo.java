@@ -48,6 +48,7 @@ public class OneListInfo {
     }
 
     public static class ContentList {
+        public String type;
         public String id;
         public String category;
         public int display_category;

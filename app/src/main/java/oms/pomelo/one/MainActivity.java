@@ -1,5 +1,6 @@
 package oms.pomelo.one;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
@@ -31,7 +32,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        StatusBarUtils.transparencyBar(this);
+        StatusBarUtils.setStatusBarColor(this, Color.WHITE);
         StatusBarUtils.StatusBarLightMode(this);
         initView();
         initListener();

@@ -5,5 +5,8 @@
     <string name="one_serial">- 连载 -</string>
     <string name="one_answer">- 问答 -</string>
     <string name="one_movie">- 影视 -</string>
+    <string name="one_station">- ONE电台 -</string>
+    <string name="one_music">- 音乐 -</string>
+
     <string name="notes_title">小记广场</string>
 </resources>
