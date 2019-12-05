@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import oms.pomelo.one.one.bean.OneListInfo;
 import oms.pomelo.one.one.view.ArticleActivity;
+import oms.pomelo.one.one.view.CommentActivity;
 import oms.pomelo.one.one.view.OneMainView;
 
 /**
@@ -49,6 +50,15 @@ public class OneListAdapter extends RecyclerView.Adapter<OneListAdapter.ViewHold
                 mContext.startActivity(intent);
             }
         });
+
+        holder.view.mIvLike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, CommentActivity.class);
+                intent.putExtra("item_id", content.item_id);
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -63,4 +73,5 @@ public class OneListAdapter extends RecyclerView.Adapter<OneListAdapter.ViewHold
             this.view = view;
         }
     }
+
 }

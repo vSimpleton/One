@@ -28,4 +28,9 @@ public class ApiHelper {
      */
     public static final String POST_LIST_LIKE = "praise/add";
 
+    /**
+     * 文章评论
+     */
+    public static final String GET_COMMENT_LIST = "comment/praiseandtime/essay/{id}/0";
+
 }

@@ -1,21 +1,14 @@
 package oms.pomelo.one.http;
 
-
-import java.util.Map;
-
 import io.reactivex.Observable;
-import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
-import oms.pomelo.one.R;
 import oms.pomelo.one.base.BaseModel;
+import oms.pomelo.one.one.bean.CommentInfo;
 import oms.pomelo.one.one.bean.NoteInfo;
 import oms.pomelo.one.one.bean.OneListInfo;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Multipart;
 import retrofit2.http.POST;
-import retrofit2.http.PartMap;
 import retrofit2.http.Path;
 
 /**
@@ -34,5 +27,8 @@ public interface ApiService {
     @FormUrlEncoded
     @POST(ApiHelper.POST_LIST_LIKE)
     Observable<Object> postLike(@Field("source_id") String id);
+
+    @GET(ApiHelper.GET_COMMENT_LIST)
+    Observable<BaseModel<CommentInfo>> getCommentList(@Path("id") String itemId);
 
 }

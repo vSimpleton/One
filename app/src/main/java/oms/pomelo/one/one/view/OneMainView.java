@@ -32,7 +32,7 @@ public class OneMainView extends RelativeLayout implements View.OnClickListener 
     private ImageView mIvContentImg;
     private TextView mTvContent;
     private TextView mTvTime;
-    private ImageView mIvLike;
+    public ImageView mIvLike;
     private ImageView mIvShare;
     private TextView mTvLikeCount;
 

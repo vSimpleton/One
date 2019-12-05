@@ -4,6 +4,7 @@ import android.content.Context;
 
 import oms.pomelo.one.base.BaseMvpView;
 import oms.pomelo.one.base.BasePresenter;
+import oms.pomelo.one.one.bean.CommentInfo;
 import oms.pomelo.one.one.bean.OneListInfo;
 
 /**
@@ -16,9 +17,7 @@ public interface OneListContract {
 
         void getOneListSuccess(OneListInfo info);
 
-        void getOneListFailed(String message);
-
-        void postLikeSuccess();
+        void getCommentListSuccess(CommentInfo info);
 
     }
 
@@ -30,7 +29,7 @@ public interface OneListContract {
 
         public abstract void getOneListInfo(String date);
 
-        public abstract void postLike(String id);
+        public abstract void getCommentList(String itemId);
     }
 
 }

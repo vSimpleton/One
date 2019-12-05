@@ -81,7 +81,7 @@
                 android:id="@+id/ivLike"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_like_normal"
+                android:src="@drawable/ic_comment"
                 android:layout_gravity="center_vertical"/>
 
             <TextView
@@ -91,7 +91,8 @@
                 android:includeFontPadding="false"
                 android:text=""
                 android:textColor="#98a1aa"
-                android:textSize="10sp" />
+                android:textSize="10sp"
+                android:visibility="gone"/>
 
         </LinearLayout>
 
@@ -102,7 +103,7 @@
             android:src="@drawable/ic_share"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginStart="10dp"/>
+            android:layout_marginStart="20dp" />
 
     </RelativeLayout>
 

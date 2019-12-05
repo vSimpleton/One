@@ -33,7 +33,7 @@ public class OneTopView extends RelativeLayout implements View.OnClickListener {
     private ImageView mIvDairy;
     private ImageView mIvCollect;
     private ImageView mIvShare;
-    public ImageView mIvLike;
+    public ImageView mIvComment;
     public TextView mTvLikeCount;
 
     public OneTopView(Context context) {
@@ -62,7 +62,7 @@ public class OneTopView extends RelativeLayout implements View.OnClickListener {
         mIvDairy = view.findViewById(R.id.ivDairy);
         mIvCollect = view.findViewById(R.id.ivCollect);
         mIvShare = view.findViewById(R.id.ivShare);
-        mIvLike = view.findViewById(R.id.ivLike);
+        mIvComment = view.findViewById(R.id.ivComment);
         mTvLikeCount = view.findViewById(R.id.tvLikeCount);
     }
 
@@ -72,13 +72,13 @@ public class OneTopView extends RelativeLayout implements View.OnClickListener {
         mIvDairy.setOnClickListener(this);
         mIvCollect.setOnClickListener(this);
         mIvShare.setOnClickListener(this);
-        mIvLike.setOnClickListener(this);
+        mIvComment.setOnClickListener(this);
 
         mTvDiscovery.setOnTouchListener(Utils.getTouchBackListener(0.8f));
         mIvDairy.setOnTouchListener(Utils.getAlphaTouchListener());
         mIvCollect.setOnTouchListener(Utils.getAlphaTouchListener());
         mIvShare.setOnTouchListener(Utils.getAlphaTouchListener());
-        mIvLike.setOnTouchListener(Utils.getAlphaTouchListener());
+        mIvComment.setOnTouchListener(Utils.getAlphaTouchListener());
     }
 
     public void setData(OneListInfo listInfo) {

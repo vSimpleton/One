@@ -1,6 +1,7 @@
 package oms.pomelo.one.one.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -25,6 +27,7 @@ import java.util.Objects;
 
 import oms.pomelo.one.HeaderAndFooterAdapter;
 import oms.pomelo.one.R;
+import oms.pomelo.one.one.bean.CommentInfo;
 import oms.pomelo.one.one.main.OneListAdapter;
 import oms.pomelo.one.one.main.OneListContract;
 import oms.pomelo.one.one.main.OneListPresenter;
@@ -63,7 +66,7 @@ public class OneFragment extends Fragment implements View.OnClickListener, OneLi
     }
 
     private void initListener() {
-        mTopView.mIvLike.setOnClickListener(this);
+        mTopView.mIvComment.setOnClickListener(this);
         mFooterView.setOnClickListener(this);
     }
 
@@ -119,21 +122,16 @@ public class OneFragment extends Fragment implements View.OnClickListener, OneLi
     }
 
     @Override
-    public void getOneListFailed(String message) {
+    public void getCommentListSuccess(CommentInfo info) {
 
-    }
-
-    @Override
-    public void postLikeSuccess() {
-        Log.e("youzi", "Success");
-        getOneListSuccess(listInfo);
-        mTopView.mIvLike.setImageResource(R.drawable.ic_like_selected);
     }
 
     @Override
     public void onClick(View v) {
-        if (v == mTopView.mIvLike) {
-            mPresenter.postLike(listInfo.content_list.get(0).id);
+        if (v == mTopView.mIvComment) {
+            Intent intent = new Intent(mContext, CommentActivity.class);
+            intent.putExtra("item_id", listInfo.content_list.get(0).item_id);
+            mContext.startActivity(intent);
         } else if (v == mFooterView) {
             getBeforeDate();
             mPresenter.getOneListInfo(today);

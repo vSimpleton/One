@@ -12,7 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".one.view.ArticleActivity"></activity>
+        <activity
+            android:name=".one.view.CommentActivity"
+            android:theme="@style/NoTitleTranslucentTheme"/>
+        <activity
+            android:name=".one.view.ArticleActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".one.note.NoteDetailActivity"
             android:screenOrientation="portrait" />
