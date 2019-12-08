@@ -23,6 +23,7 @@ public abstract class BaseObserver<T> implements Observer<BaseModel<T>> {
     @Override
     public void onNext(BaseModel<T> value) {
         if (value != null) {
+            onSuccess(value);
             /**
              * 根据具体要求修改
              */

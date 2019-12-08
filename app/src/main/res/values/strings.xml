@@ -9,4 +9,6 @@
     <string name="one_music">- 音乐 -</string>
 
     <string name="notes_title">小记广场</string>
+    <string name="empty_opus_comment">快来添加第一条评论吧</string>
+    <string name="new_comment_tips">最新评论</string>
 </resources>

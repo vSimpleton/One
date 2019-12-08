@@ -6,12 +6,20 @@ package oms.pomelo.one.http;
  */
 public class ApiHelper {
 
-    public static final String BASE_URL = "http://v3.wufazhuce.com:8000/api/";
+    /**
+     * ONE base_url
+     */
+    public static final String ONE_BASE_URL = "http://v3.wufazhuce.com:8000/api/";
+
+    /**
+     * 句读 base_url
+     */
+    public static final String JUDOU_BASE_URL = "https://judouapp.com/api/";
 
     /**
      * 首页每日文章列表
      */
-    public static final String GET_ONE_CONTENT_LIST = "channel/one/0/广州市";
+    public static final String GET_ONE_CONTENT_LIST = "channel/one/{date}/广州市";
 
     /**
      * 小记广场
@@ -32,5 +40,20 @@ public class ApiHelper {
      * 文章评论
      */
     public static final String GET_COMMENT_LIST = "comment/praiseandtime/essay/{id}/0";
+
+    /**
+     * 句读广场动态
+     */
+    public static final String GET_JUDOU_OPUS = "v5/statuses";
+
+    /**
+     * 句读广场动态详情
+     */
+    public static final String GET_JUDOU_OPUS_DETAIL = "v6/op/sentences/{uuid}";
+
+    /**
+     * 句读广场动态详情的评论
+     */
+    public static final String GET_JUDOU_OPUS_COMMENT = "v6/op/sentences/{uuid}/comments/latest";
 
 }

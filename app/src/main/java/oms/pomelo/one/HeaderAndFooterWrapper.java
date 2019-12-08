@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
  * Created by Sherry on 2019/12/3
  */
 
-public class HeaderAndFooterAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class HeaderAndFooterWrapper extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private static final int BASE_ITEM_TYPE_HEADER = 100000;
     private static final int BASE_ITEM_TYPE_FOOTER = 200000;
@@ -23,7 +23,7 @@ public class HeaderAndFooterAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     private RecyclerView.Adapter mInnerAdapter;
 
-    public HeaderAndFooterAdapter(RecyclerView.Adapter adapter) {
+    public HeaderAndFooterWrapper(RecyclerView.Adapter adapter) {
         mInnerAdapter = adapter;
     }
 
@@ -108,11 +108,8 @@ public class HeaderAndFooterAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         int position = holder.getLayoutPosition();
         if (isHeaderViewPos(position) || isFooterViewPos(position)) {
             ViewGroup.LayoutParams lp = holder.itemView.getLayoutParams();
-
             if (lp != null && lp instanceof StaggeredGridLayoutManager.LayoutParams) {
-
                 StaggeredGridLayoutManager.LayoutParams p = (StaggeredGridLayoutManager.LayoutParams) lp;
-
                 p.setFullSpan(true);
             }
         }

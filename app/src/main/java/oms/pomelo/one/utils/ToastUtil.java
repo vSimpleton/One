@@ -16,7 +16,7 @@ import oms.pomelo.one.R;
 
 public class ToastUtil {
 
-    public static void showToast(Context context, String message) {
+    public static void showImageToast(Context context, String message) {
         View view = LayoutInflater.from(context).inflate(R.layout.toast_img, null);
         ImageView image = view.findViewById(R.id.iv_toast);
         image.setImageResource(R.drawable.ic_toast_doraemon);
@@ -29,7 +29,7 @@ public class ToastUtil {
         toast.show();
     }
 
-    public static void showTextToast(Context context, String message) {
+    public static void showToast(Context context, String message) {
         View view = LayoutInflater.from(context).inflate(R.layout.toast_text, null);
         TextView text = view.findViewById(R.id.tv_toast);
         text.setText(message);

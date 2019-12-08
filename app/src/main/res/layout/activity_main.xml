@@ -33,12 +33,17 @@
             android:drawableTop="@drawable/one_selector" />
 
         <RadioButton
-            android:id="@+id/record_tab"
+            android:id="@+id/opus_tab"
             style="@style/RadioButton"
             android:drawableTop="@drawable/all_selector" />
 
         <RadioButton
-            android:id="@+id/contact_tab"
+            android:id="@+id/all_tab"
+            style="@style/RadioButton"
+            android:drawableTop="@drawable/all_selector" />
+
+        <RadioButton
+            android:id="@+id/me_tab"
             style="@style/RadioButton"
             android:drawableTop="@drawable/me_selector" />
 

@@ -39,14 +39,15 @@ public class RetrofitFactory {
                 .connectTimeout(20 * 1000, TimeUnit.MILLISECONDS) //20秒链接超时
                 .writeTimeout(20 * 1000, TimeUnit.MILLISECONDS) //写入超时20秒
                 .readTimeout(20 * 1000, TimeUnit.MILLISECONDS)
-                .addInterceptor(InterceptorUtil.HeaderInterceptor());
+                .addInterceptor(InterceptorUtil.ParamsInterceptor())
+                .addInterceptor(InterceptorUtil.BaseUrlInterceptor());
 
         if (BuildConfig.DEBUG) {
             builder.addInterceptor(InterceptorUtil.LogInterceptor()); //添加日志拦截器
         }
 
         Retrofit mRetrofit = new Retrofit.Builder()
-                .baseUrl(ApiHelper.BASE_URL)
+                .baseUrl(ApiHelper.ONE_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create()) //添加Gson转换器
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create()) //添加RxJava转换器
                 .client(builder.build())

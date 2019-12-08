@@ -2,9 +2,7 @@ package oms.pomelo.one.one.main;
 
 import android.content.Context;
 
-import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import oms.pomelo.one.base.BaseModel;
 import oms.pomelo.one.base.BaseObserver;
@@ -33,7 +31,7 @@ public class OneListPresenter extends OneListContract.Presenter{
 
                     @Override
                     protected void onFailure(OneListInfo data, int code, String message) {
-                        ToastUtil.showTextToast(mContext, "获取文章列表失败");
+                        ToastUtil.showToast(mContext, "获取文章列表失败");
                     }
 
                 });
@@ -50,7 +48,7 @@ public class OneListPresenter extends OneListContract.Presenter{
 
                     @Override
                     protected void onFailure(CommentInfo data, int res, String msg) {
-                        ToastUtil.showTextToast(mContext, "获取评论失败");
+                        ToastUtil.showToast(mContext, "获取评论失败");
                     }
                 });
     }

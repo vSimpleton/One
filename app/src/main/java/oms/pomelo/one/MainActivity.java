@@ -19,6 +19,7 @@ import oms.pomelo.one.all.AllFragment;
 import oms.pomelo.one.base.BaseActivity;
 import oms.pomelo.one.me.MeFragment;
 import oms.pomelo.one.one.view.OneFragment;
+import oms.pomelo.one.opus.list.OpusFragment;
 import oms.pomelo.one.utils.StatusBarUtils;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener, ViewPager.OnPageChangeListener, RadioGroup.OnCheckedChangeListener {
@@ -41,8 +42,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private void initView() {
         mViewPager = findViewById(R.id.viewPager);
         mRgTab = findViewById(R.id.rgTab);
-        mFragments = new ArrayList<>(3);
+        mFragments = new ArrayList<>(4);
         mFragments.add(new OneFragment());
+        mFragments.add(new OpusFragment());
         mFragments.add(new AllFragment());
         mFragments.add(new MeFragment());
         mAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), mFragments);

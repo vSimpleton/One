@@ -49,7 +49,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void toast(String text) {
-        ToastUtil.showTextToast(this, text);
+        ToastUtil.showToast(this, text);
     }
 
     @Override

@@ -12,11 +12,9 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -25,7 +23,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 
-import oms.pomelo.one.HeaderAndFooterAdapter;
+import oms.pomelo.one.HeaderAndFooterWrapper;
 import oms.pomelo.one.R;
 import oms.pomelo.one.one.bean.CommentInfo;
 import oms.pomelo.one.one.main.OneListAdapter;
@@ -68,6 +66,7 @@ public class OneFragment extends Fragment implements View.OnClickListener, OneLi
     private void initListener() {
         mTopView.mIvComment.setOnClickListener(this);
         mFooterView.setOnClickListener(this);
+        mTvMore.setOnClickListener(this);
     }
 
     private void initView(View view) {
@@ -94,7 +93,7 @@ public class OneFragment extends Fragment implements View.OnClickListener, OneLi
     }
 
     private void initPresenter() {
-        mPresenter = new OneListPresenter(getContext());
+        mPresenter = new OneListPresenter(mContext);
         mPresenter.attachView(this);
         mPresenter.getOneListInfo(today);
     }
@@ -110,10 +109,10 @@ public class OneFragment extends Fragment implements View.OnClickListener, OneLi
         listInfo = info;
         mTopView.setData(info);
         mAdapter = new OneListAdapter(mContext, listInfo.content_list);
-        HeaderAndFooterAdapter adapter = new HeaderAndFooterAdapter(mAdapter);
-        adapter.addHeaderView(mTopView);
-        adapter.addFootView(mFooterView);
-        mRcyContent.setAdapter(adapter);
+        HeaderAndFooterWrapper wrapper = new HeaderAndFooterWrapper(mAdapter);
+        wrapper.addHeaderView(mTopView);
+        wrapper.addFootView(mFooterView);
+        mRcyContent.setAdapter(wrapper);
 
         String day = info.date.substring(8, 10);
         mTvDay.setText(day);

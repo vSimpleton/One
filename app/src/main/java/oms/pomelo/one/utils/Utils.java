@@ -183,4 +183,24 @@ public class Utils {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, Resources.getSystem().getDisplayMetrics());
     }
 
+    /**
+     * 动态时间流转换规则
+     * @param time 动态发布的时间, seconds
+     * @return 显示的时间
+     */
+    public static String getPublishTime(long time) {
+        String msg;
+        long currentTime = System.currentTimeMillis() / 1000; //获取当前的时间
+        if (currentTime - time < 60) {
+            msg = "刚刚发布";
+        } else if (currentTime - time < 3600) {
+            msg = String.format("%s分钟前发布", (currentTime - time) / 60);
+        } else if (currentTime - time > 3600 * 24) {
+            msg = "更早前发布";
+        } else {
+            msg = String.format("%s小时前发布", (currentTime - time) / 3600);
+        }
+        return msg;
+    }
+
 }
