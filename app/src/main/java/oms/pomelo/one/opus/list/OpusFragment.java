@@ -34,7 +34,6 @@ public class OpusFragment extends Fragment implements OpusInfoContract.OpusInfoV
     private OpusInfoPresenter mPresenter;
     private OpusListAdapter mAdapter;
     private Context mContext;
-    private String uuid;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -67,8 +66,9 @@ public class OpusFragment extends Fragment implements OpusInfoContract.OpusInfoV
             }
 
             @Override
-            public void onClickLike() {
-                ToastUtil.showToast(mContext, "点赞");
+            public void onClickLike(String uuid) {
+                mPresenter.postOpusLike(uuid, "like");
+//                ToastUtil.showToast(mContext, "点赞");
             }
 
             @Override

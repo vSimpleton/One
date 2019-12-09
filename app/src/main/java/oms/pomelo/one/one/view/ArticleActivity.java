@@ -4,8 +4,10 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -33,7 +35,9 @@ public class ArticleActivity extends BaseActivity {
     private TextView mTvTitle;
     private ImageView mIvBack;
     private ConstraintLayout mTitleBar;
-    private TextView mTvLoading;
+    private ImageView mIvLoading;
+    private AnimationDrawable animationDrawable;
+    private Handler mHandler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +57,7 @@ public class ArticleActivity extends BaseActivity {
         mTvTitle = findViewById(R.id.tvTitle);
         mIvBack = findViewById(R.id.ivLeft);
         mTitleBar = findViewById(R.id.titleBar);
-        mTvLoading = findViewById(R.id.tvLoading);
+        mIvLoading = findViewById(R.id.ivLoading);
         if (!TextUtils.isEmpty(mType)) {
             String text = mType.substring(2, 4);
             if (mType.equals("- ONE电台 -")) {
@@ -100,15 +104,13 @@ public class ArticleActivity extends BaseActivity {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 //设置加载开始的操作（如loading）
-                mTvLoading.setVisibility(View.VISIBLE);
+                startLoading();
             }
 
             @Override
             public void onPageFinished(WebView view, String url) {
-                super.onPageFinished(view, url);
                 //设置加载结束的操作（如结束loading）
-//                hideHeader();
-                mTvLoading.setVisibility(View.GONE);
+                stopLoading();
             }
         });
 
@@ -120,19 +122,40 @@ public class ArticleActivity extends BaseActivity {
                 //获取网站标题
             }
 
-            //获取加载进度
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
-                if (newProgress < 100) {
-                    String progress = newProgress + "%";
-                    mTvLoading.setText("正在加载..." + progress);
-                } else if (newProgress == 100) {
-                    String progress = newProgress + "%";
-                    mTvLoading.setText(progress);
-                }
+                //获取加载进度
             }
         });
 
+    }
+
+    private void startLoading() {
+        mIvLoading.setVisibility(View.VISIBLE);
+        //获取背景，并将其强转成AnimationDrawable
+        animationDrawable = (AnimationDrawable) mIvLoading.getBackground();
+        //判断是否在运行
+        if(!animationDrawable.isRunning()){
+            //开启帧动画
+            animationDrawable.start();
+        }
+    }
+
+    private void stopLoading() {
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mIvLoading.setVisibility(View.GONE);
+                        if (animationDrawable != null && animationDrawable.isRunning()) {
+                            animationDrawable.stop();
+                        }
+                    }
+                });
+            }
+        }, 350);
     }
 
     private void initListener() {

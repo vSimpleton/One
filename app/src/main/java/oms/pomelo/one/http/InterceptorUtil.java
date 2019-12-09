@@ -64,8 +64,9 @@ public class InterceptorUtil {
                                 .host(oldRequest.url().host())
                                 .addQueryParameter("per_page", "20")
                                 .addQueryParameter("app_key", "2a438661-92c0-4a2d-b32e-3fd0c47a0a3c")
-                                .addQueryParameter("timestamp", "1575649435")
-                                .addQueryParameter("signature", "73c2339db4360b413d7f73e8ff624570");
+                                .addQueryParameter("timestamp", "1575708055")
+                                .addQueryParameter("token", "19530a2369d2c04c05d09b6f532e3fb7")
+                                .addQueryParameter("signature", "44b6724d62f277c8788a12de042a2736");
 
                     } else if ("one".equals(urlName)) {
                         builder = oldRequest.url()

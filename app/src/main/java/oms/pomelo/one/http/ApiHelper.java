@@ -27,11 +27,6 @@ public class ApiHelper {
     public static final String GET_NOTE_INFO = "diary/square/more/0";
 
     /**
-     * 文章收藏
-     */
-    public static final String POST_LIST_COLLECT = "collection/add";
-
-    /**
      * 文章点赞
      */
     public static final String POST_LIST_LIKE = "praise/add";
@@ -55,5 +50,15 @@ public class ApiHelper {
      * 句读广场动态详情的评论
      */
     public static final String GET_JUDOU_OPUS_COMMENT = "v6/op/sentences/{uuid}/comments/latest";
+
+    /**
+     * 句读广场点赞
+     */
+    public static final String POST_JUDOU_OPUS_LIKE = "v5/sentences/{uuid}/likes";
+
+    /**
+     * 句读广场评论
+     */
+    public static final String POST_JUDOU_OPUS_COMMENT = "v5/sentences/{uuid}/comments";
 
 }

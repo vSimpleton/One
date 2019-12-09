@@ -9,7 +9,7 @@ public interface OnOpusClickListener {
 
     void onClickOpusView(String uuid);
 
-    void onClickLike();
+    void onClickLike(String uuid);
 
     void onClickComment(String uuid);
 

@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,8 +46,10 @@ public class OneFragment extends Fragment implements View.OnClickListener, OneLi
     private TextView mTvMore;
     private View mFooterView;
     private String today;
+    private String currentDay;
     private SimpleDateFormat format;
     private Date date;
+    private SwipeRefreshLayout mRefreshLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -77,12 +80,16 @@ public class OneFragment extends Fragment implements View.OnClickListener, OneLi
         mTvDay = view.findViewById(R.id.tvDay);
         mTvDate = view.findViewById(R.id.tvDate);
         mTvMore = view.findViewById(R.id.tvMore);
+        mRefreshLayout = view.findViewById(R.id.refreshLayout);
         mFooterView = LayoutInflater.from(mContext).inflate(R.layout.one_footer_view, null, false);
 
         format = new SimpleDateFormat("yyyy-MM-dd");
         date = new Date();
         today = format.format(date);
+        currentDay = format.format(date);
     }
+
+
 
     private void initRecyclerView() {
         LinearLayoutManager manager = new LinearLayoutManager(mContext);
@@ -90,6 +97,14 @@ public class OneFragment extends Fragment implements View.OnClickListener, OneLi
         DividerItemDecoration mItemDecoration = new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL);
         mItemDecoration.setDrawable(Objects.requireNonNull(ContextCompat.getDrawable(mContext, R.drawable.shape_rcy_divider)));
         mRcyContent.addItemDecoration(mItemDecoration);
+
+        mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mPresenter.getOneListInfo(currentDay);
+                date = new Date();
+            }
+        });
     }
 
     private void initPresenter() {
@@ -106,6 +121,9 @@ public class OneFragment extends Fragment implements View.OnClickListener, OneLi
 
     @Override
     public void getOneListSuccess(OneListInfo info) {
+        if (mRefreshLayout != null) {
+            mRefreshLayout.setRefreshing(false);
+        }
         listInfo = info;
         mTopView.setData(info);
         mAdapter = new OneListAdapter(mContext, listInfo.content_list);

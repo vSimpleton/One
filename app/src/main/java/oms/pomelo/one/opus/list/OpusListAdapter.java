@@ -49,7 +49,7 @@ public class OpusListAdapter extends RecyclerView.Adapter<OpusListAdapter.ViewHo
             @Override
             public void onClickLike() {
                 if (mListener != null) {
-                    mListener.onClickLike();
+                    mListener.onClickLike(info.getUuid());
                 }
             }
 

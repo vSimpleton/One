@@ -25,6 +25,8 @@ public interface OpusInfoContract {
         }
 
         public abstract void getOpusInfo();
+
+        public abstract void postOpusLike(String uuid, String action);
     }
 
 }
